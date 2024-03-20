@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Report</title>
-    <style>
-        body {
-            color: blue;
-            font-family: verdana;
-            font-size: 18pt;  /* Adjust font size as needed */
-        }
-    </style>
 </head>
 <body>
-    <h1>Application Report</h1>
+    <h1>Ghana Police</h1>
+    <h2>Extract from Station Diary</h2>
+
+    <p>Station: Online</p>
+    <p>Region: Acra</p>
     <p>Applicant Name: {{ name }}</p>
-    <p>Reason for Applying: {{ reason }}</p>
-    <p>Submitted At: {{ created_at }}</p>
+
+    <p>Date: {{ created_at }}</p>
+
+    <p>Occurence: {{ reason }}</p>
+
+    <p>No.: {{id}}</p>
+
+    <p>Ref No.: {{ ref }}</p>
+
+
 
     </body>
 </html>
