@@ -5,11 +5,7 @@ class Application(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
-    # Reason for applying
     reason = models.TextField()
-
-
-    reason_type = models.CharField(max_length=255, blank=False)
 
     documents = models.FileField(upload_to='uploads/', blank=True)
 

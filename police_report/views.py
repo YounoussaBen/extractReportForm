@@ -15,11 +15,11 @@ class GeneratePdf(View):
 
     if application:
       data = {
-          "name": application.first_name + " " + application.last_name,  
-          "reason": application.reason, 
-          "created_at": application.created_at.strftime("%Y-%m-%d"), 
+          "name": application.first_name + " " + application.last_name,  # Combine first and last name
+          "reason": application.reason,  # Add reason for applying
+          "created_at": application.created_at.strftime("%Y-%m-%d"),  # Format creation date
           "id": application.pk,
-          "ref": "00" + str(application.pk) + "ref",
+          "ref": "00" + str(application.pk)
       }
       pdf = render_to_pdf('report.html', data)
       if pdf:
@@ -39,7 +39,7 @@ class ApplicationCreateView(APIView):
   def post(self, request):
     form = ApplicationSerializer(data=request.data)
     if form.is_valid():
-      form.save()
-      return redirect('home') 
+        form.save()
+        return redirect('pdf') 
     else:
-      return render(request, 'application_form.html', {'form': form})  # Render form with errors
+        return render(request, 'application_form.html', {'form': form})  # Render form with errors
