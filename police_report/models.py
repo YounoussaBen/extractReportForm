@@ -4,21 +4,13 @@ class Application(models.Model):
     # User details
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    email = models.EmailField()
 
     # Reason for applying
     reason = models.TextField()
 
-    # Choices for reason (optional)
-    REASON_CHOICES = (
-        ('employment', 'Employment Background Check'),
-        ('visa', 'Visa Application'),
-        ('volunteer', 'Volunteer Work'),
-        ('other', 'Other'),
-    )
-    reason_type = models.CharField(max_length=20, choices=REASON_CHOICES, blank=True)
 
-    # Optional file upload
+    reason_type = models.CharField(max_length=255, blank=False)
+
     documents = models.FileField(upload_to='uploads/', blank=True)
 
     # Timestamps
