@@ -15,9 +15,11 @@ class GeneratePdf(View):
 
     if application:
       data = {
-          "name": application.first_name + " " + application.last_name,  # Combine first and last name
-          "reason": application.reason,  # Add reason for applying
-          "created_at": application.created_at.strftime("%Y-%m-%d"),  # Format creation date
+          "name": application.first_name + " " + application.last_name,  
+          "reason": application.reason, 
+          "created_at": application.created_at.strftime("%Y-%m-%d"), 
+          "id": application.pk,
+          "ref": "00" + str(application.pk) + "ref",
       }
       pdf = render_to_pdf('report.html', data)
       if pdf:
