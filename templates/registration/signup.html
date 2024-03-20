@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-green-50">
+  <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold text-center mb-4">Sign Up</h2>
+    <form method="post" class="space-y-4">
+      {% csrf_token %}
+      <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+      <input type="text" id="username" name="username" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:ring-1">
+      <label for="password1" class="block text-sm font-medium text-gray-700">Password</label>
+      <input type="password" id="password1" name="password1" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:ring-1">
+      <label for="password2" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+      <input type="password" id="password2" name="password2" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:ring-1">
+      <div class="flex items-center justify-between">
+        <button type="submit" class="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-700">Sign Up</button>
+        <a href="{% url 'login' %}" class="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-700">Log In</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
