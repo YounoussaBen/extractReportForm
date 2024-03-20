@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Application Form{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Application Form</h1>
+    <form action="{% url 'create_application' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <p>
+            <label for="id_first_name">First Name:</label>
+            <input type="text" name="first_name" id="id_first_name" required>
+        </p>
+        <p>
+            <label for="id_last_name">Last Name:</label>
+            <input type="text" name="last_name" id="id_last_name" required>
+        </p>
+        <p>
+            <label for="id_email">Email Address:</label>
+            <input type="email" name="email" id="id_email" required>
+        </p>
+        <p>
+            <label for="id_reason">Reason for Applying:</label>
+            <textarea name="reason" id="id_reason" required></textarea>
+        </p>
+        <p>
+            <label for="id_reason_type">Reason Type (Optional):</label>
+            <select name="reason_type" id="id_reason_type">
+                <option value="">Choose...</option>
+                {% for choice in form.REASON_CHOICES %}
+                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label for="id_documents">Documents (Optional):</label>
+            <input type="file" name="documents" id="id_documents">
+        </p>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+{% endblock %}
