@@ -17,21 +17,8 @@
             <input type="text" name="last_name" id="id_last_name" required>
         </p>
         <p>
-            <label for="id_email">Email Address:</label>
-            <input type="email" name="email" id="id_email" required>
-        </p>
-        <p>
-            <label for="id_reason">Reason for Applying:</label>
+            <label for="id_reason">Occurence:</label>
             <textarea name="reason" id="id_reason" required></textarea>
-        </p>
-        <p>
-            <label for="id_reason_type">Reason Type (Optional):</label>
-            <select name="reason_type" id="id_reason_type">
-                <option value="">Choose...</option>
-                {% for choice in form.REASON_CHOICES %}
-                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                {% endfor %}
-            </select>
         </p>
         <p>
             <label for="id_documents">Documents (Optional):</label>
