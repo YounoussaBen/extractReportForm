@@ -52,12 +52,16 @@
 {% block content %}
 {% endblock content %}
 </div>
-</body>
+{% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
 <footer class="flex flex-col items-center justify-center py-4 px-8 space-y-2 bg-gray-800 text-white">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500" viewBox="0 0 20 20" fill="currentColor">
       <path fill-rule="evenodd" d="M8.43333 16.471A3.5 3.5 0 0 1 12 13v-2.828A3.5 3.5 0 0 0 8.43333 16.471zM4.25 8.114A4.75 4.75 0 0 1 8 12.75v2.828a4.75 4.75 0 0 0 3.75-4.636zM15.75 8.114A4.75 4.75 0 0 1 12 12.75v2.828a4.75 4.75 0 0 0 3.75-4.636zM11.66667 3.529A7.75 7.75 0 0 0 4 11.25v2.828a7.75 7.75 0 0 1 7.66667-7.721z" clip-rule="evenodd" />
     </svg>
     <span class="text-sm font-medium">Ghana Police Service - &copy; 2024</span>
   </footer>
-
+</body>
 </html>
