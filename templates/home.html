@@ -3,21 +3,45 @@
 {% load static %}
 
 
+
+## Online Police Extract Report Form Application
+
+This project outlines the development of an online police extract report form application, designed to streamline the process of obtaining police clearance certificates for citizens. 
+
+**Benefits:**
+
+* Convenience: Apply remotely for faster processing and application status tracking.
+* Efficiency: Reduced paperwork and improved data management for law enforcement agencies.
+
+**Technology Stack:**
+
+* Django (backend framework)
+* HTML, CSS, Bootstrap (front-end development)
+* JavaScript
+* SQLite database
+
+
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div className='text-center self-center items-center justify-center bg-green-50 h-[85vh] '>
-<h2 class="text-2xl font-bold py-4 text-center">Welcome to Your App</h2>
-<p class="text-gray-700 text-lg pb-4">
-    Describe your app's purpose and features here.
-</p>
 
-{% if user.is_authenticated %}
-<a href="{% url 'create_application' %}" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
-    Get Started
-</a>
-{% endif %}
 
-<img src="{% static 'path/to/your/image.png' %}" alt="App Image" class="mx-auto mt-8 w-full h-auto">
+<div class='text-center self-center items-center justify-center bg-green-50 h-[85vh] '>
+  <h2 class="text-2xl font-bold py-4 text-center">Get Your Police Clearance Certificate Online</h2>
+  <p class="text-gray-700 text-lg pb-4">
+    A faster, easier way to apply.
+  </p>
+
+  {% if user.is_authenticated %}
+    <a href="{% url 'create_application' %}" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700">
+      Get Started
+    </a>
+    {%else%}
+    <a href="{% url 'login' %}" class="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700">
+        Get Started
+      </a>
+  {% endif %}
+
+  <img src="{% static 'img.png' %}" alt="App Image" class="mx-auto mt-8 w-full h-auto flex items-center justify-center mt-auto pt-20 bg-green-50">
 </div>
 {% endblock %}
