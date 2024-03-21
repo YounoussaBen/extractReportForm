@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,31 +7,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Report</title>
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
 </head>
-<style>
-    body {
-        color: blue;
-        font-family: verdana;
-        font-size: 18pt;  /* Adjust font size as needed */
-    }
-</style>
-<body>
-    <h1>Ghana Police</h1>
-    <h2>Extract from Station Diary</h2>
 
-    <p>Station: Online</p>
-    <p>Region: Acra</p>
-    <p>Applicant Name: {{ name }}</p>
-
-    <p>Date: {{ created_at }}</p>
-
-    <p>Occurence: {{ reason }}</p>
-
-    <p>No.: {{id}}</p>
-
-    <p>Ref No.: {{ ref }}</p>
-
-
+    <body>
+        <div>
+            <div className='flex justify-between px-24 py-10'>
+              <div className='flex items-center flex-1 align-middle'>
+                <img src={Logo} alt="" class=" mr-4 w-[100px]"/>
+                <h1 className='text-3xl font-extrabold'>GHANA POLICE</h1>
+              </div>
+              <div>
+                <p><span className='text-xl font-semibold'>Station:</span> Online </p>
+                <p><span className='text-xl font-semibold'>Region:</span> Accra</p>
+              </div>
+            </div>
+            <div className='flex justify-around pb-12 flex-co'>
+              <p><span className='text-xl font-semibold'>Applicant Name:</span>{{ name }}</p>
+            </div>
+             <div className='flex flex-col items-center justify-center flex-1'>
+             <h1 className='text-2xl font-black'>EXTRACT FROM STATION DIARY</h1>
+          <div className='table w-full p-10'>
+                  <div className='table-header-group '>
+                    <div className='table-row '>
+                      <div className='table-cell w-1/5 p-4 text-2xl font-bold text-left border-2 border-t-4 border-l-4 border-gray-600 border-spacing-3'> Date and Time </div>
+                      <div className='table-cell w-2/5 p-4 text-2xl font-bold text-left border-2 border-t-4 border-gray-600 border-spacing-3'> Occurence </div>
+                      <div className='table-cell w-1/5 p-4 text-2xl font-bold text-left border-2 border-t-4 border-gray-600 border-spacing-3'> No. </div>
+                      <div className='table-cell w-1/5 p-4 text-2xl font-bold text-left border-2 border-t-4 border-r-4 border-gray-600 border-spacing-3'> Ref No. </div>
+                    </div>
+                  </div>
+                  <div className='table-row-group h-[90vh]'>
+                    <div className='table-row '>
+                      <div className='table-cell p-4 text-xl border-2 border-b-4 border-l-4 border-gray-600 border--2 border-spacing-3'> {{ created_at }}</div>
+                      <div className='table-cell p-4 text-xl border-2 border-b-4 border-gray-600 border-spacing-3'>{{ reason }}</div>
+                      <div className='table-cell p-4 text-xl border-2 border-b-4 border-gray-600 border-spacing-3'>{{id}}</div>
+                      <div className='table-cell p-4 text-xl border-2 border-b-4 border-r-4 border-gray-600 border-spacing-3'>{{ref}}</div>
+                    </div>
+                  </div>
+          </div>
+          </div>
+          </div>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
     </body>
 </html>

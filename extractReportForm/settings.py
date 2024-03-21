@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'police_report',
-    'compressor', 
 ]
 
 MIDDLEWARE = [
@@ -128,9 +127,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
-
-COMPRESS_ROOT = BASE_DIR / 'static'
- 
-COMPRESS_ENABLED = True
- 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)

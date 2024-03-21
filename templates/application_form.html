@@ -3,29 +3,28 @@
 {% block title %}Application Form{% endblock %}
 
 {% block content %}
-<body>
-    <h1>Application Form</h1>
-    <form action="{% url 'create_application' %}" method="post" enctype="multipart/form-data">
+<div className='flex flex-col items-center px-2 py-10'>
+    <h1 className='mb-10 text-4xl font-bold'>Application Form</h1>
+    <form action="{% url 'create_application' %}" method="post" enctype="multipart/form-data" className='flex-col items-start justify-start w-full p-10 rounded-lg md:w-3/4 bg-slate-600'>
         {% csrf_token %}
-
-        <p>
-            <label for="id_first_name">First Name:</label>
-            <input type="text" name="first_name" id="id_first_name" required>
+        <p className='flex flex-col w-full pb-5 text-white'>
+            <label className='pr-5 text-xl' for="id_first_name">First Name:</label>
+            <input className='w-full p-2 text-black rounded-lg' type="text" name="first_name" id="id_first_name" required />
         </p>
-        <p>
-            <label for="id_last_name">Last Name:</label>
-            <input type="text" name="last_name" id="id_last_name" required>
-        </p>
-        <p>
-            <label for="id_reason">Occurence:</label>
-            <textarea name="reason" id="id_reason" required></textarea>
-        </p>
-        <p>
-            <label for="id_documents">Documents (Optional):</label>
-            <input type="file" name="documents" id="id_documents">
+        <p className='flex flex-col w-full pb-5 text-white'>
+            <label className='pr-5 text-xl' for="id_last_name">Last Name:</label>
+            <input className='w-full p-2 rounded-lg ' type="text" name="last_name" id="id_last_name" required />
         </p>
 
-        <button type="submit">Submit Application</button>
+        <p className='flex flex-col w-full pb-5 text-white'>
+            <label className='pr-5 text-xl' for="id_reason_type">Documents (Optional)</label>
+            <input className='w-full p-1 rounded-lg ' type="file" name="documents" id="id_documents" />
+        </p>
+        <p className='flex flex-col w-full pb-5 mb-5 text-white'>
+            <label className='pr-5 text-xl' for="id_reason">Occurent:</label>
+            <textarea className='w-full pr-5 text-xl rounded-lg' name="reason" id="id_reason" required></textarea>
+        </p>
+        <button type="submit" class="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-700 text-white">Submit Application</button>
     </form>
-</body>
+</div>
 {% endblock %}
