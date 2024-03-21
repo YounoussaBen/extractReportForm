@@ -3,28 +3,69 @@
 {% block title %}Application Form{% endblock %}
 
 {% block content %}
-<div className='flex flex-col items-center px-2 py-10'>
-    <h1 className='mb-10 text-4xl font-bold'>Application Form</h1>
-    <form action="{% url 'create_application' %}" method="post" enctype="multipart/form-data" className='flex-col items-start justify-start w-full p-10 rounded-lg md:w-3/4 bg-slate-600'>
-        {% csrf_token %}
-        <p className='flex flex-col w-full pb-5 text-white'>
-            <label className='pr-5 text-xl' for="id_first_name">First Name:</label>
-            <input className='w-full p-2 text-black rounded-lg' type="text" name="first_name" id="id_first_name" required />
-        </p>
-        <p className='flex flex-col w-full pb-5 text-white'>
-            <label className='pr-5 text-xl' for="id_last_name">Last Name:</label>
-            <input className='w-full p-2 rounded-lg ' type="text" name="last_name" id="id_last_name" required />
-        </p>
+<div class="container mx-auto px-4 py-10">
+  <form action="{% url 'create_application' %}" method="post" enctype="multipart/form-data" class="form shadow-md rounded-lg bg-gray-100 p-8" target="_blank">
+    {% csrf_token %}
 
-        <p className='flex flex-col w-full pb-5 text-white'>
-            <label className='pr-5 text-xl' for="id_reason_type">Documents (Optional)</label>
-            <input className='w-full p-1 rounded-lg ' type="file" name="documents" id="id_documents" />
+    <fieldset class="fieldset border border-gray-300 rounded-lg px-4 py-4">
+      <legend class="legend text-xl font-bold text-gray-700 mb-2">Applicant Information</legend>
+      <p class="mb-4 flex items-center">
+        <label for="id_name" class="label text-gray-700 text-sm font-medium mr-2">Full Name:</label>
+        <input class="input w-full p-2 text-black rounded-lg" type="text" name="name" id="id_name" required />
+      </p>
+    </fieldset>
+
+    <p class="mb-4 flex items-center">
+      <label for="id_phone_number" class="label text-gray-700 text-sm font-medium mr-2">Phone Number:</label>
+      <input class="input w-full p-2 text-black rounded-lg" type="tel" name="phone_number" id="id_phone_number" required />
+    </p>
+
+    <!-- Add Date and Time of Occurrence field -->
+    <p class="mb-4 flex items-center">
+      <label for="id_occurrence_date_time" class="label text-gray-700 text-sm font-medium mr-2">Date and Time of Occurrence:</label>
+      <input class="input w-full p-2 text-black rounded-lg" type="datetime-local" name="occurrence_date_time" id="id_occurrence_date_time" required />
+    </p>
+
+    <!-- Add Address field -->
+    <p class="mb-4 flex items-center">
+      <label for="id_address" class="label text-gray-700 text-sm font-medium mr-2">Address:</label>
+      <input class="input w-full p-2 text-black rounded-lg" type="text" name="address" id="id_address" required />
+    </p>
+
+    <fieldset class="fieldset border border-gray-300 rounded-lg px-4 py-4">
+        <legend class="legend text-xl font-bold text-gray-700 mb-2">Lost Document</legend>
+        <p class="mb-4 flex items-center">
+          <label for="lost_document" class="label text-gray-700 text-sm font-medium mr-2">Select Lost Document:</label>
+          <select id="lost_document" name="lost_document" class="input w-full px-3 py-2 border rounded-md text-black">
+            <option value="passport">Passport</option>
+            <option value="drivers_license">Driver's License</option>
+            <option value="ghana_card">Ghana Card</option>
+            <option value="other">Other (Please Specify)</option>
+          </select>
         </p>
-        <p className='flex flex-col w-full pb-5 mb-5 text-white'>
-            <label className='pr-5 text-xl' for="id_reason">Occurent:</label>
-            <textarea className='w-full pr-5 text-xl rounded-lg' name="reason" id="id_reason" required></textarea>
+        <p id="other_document_field" class="hidden mb-4 flex items-center">
+          <label for="other_document_details" class="label text-gray-700 text-sm font-medium mr-2">Other Document Details:</label>
+          <input class="input w-full p-2 text-black rounded-lg" type="text" name="other_document_details" id="other_document_details" />
         </p>
-        <button type="submit" class="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-700 text-white">Submit Application</button>
-    </form>
+      </fieldset>
+      <br><br><b></b>
+      <div>
+        <button type="submit" class="button px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-md">Submit Application</button>
+      </div>
+  </form>
 </div>
+
+<script>
+  const lostDocumentSelect = document.getElementById('lost_document');
+  const otherDocumentField = document.getElementById('other_document_field');
+
+  lostDocumentSelect.addEventListener('change', (event) => {
+    if (event.target.value === 'other') {
+      otherDocumentField.classList.remove('hidden');
+    } else {
+      otherDocumentField.classList.add('hidden');
+    }
+  });
+</script>
+
 {% endblock %}
