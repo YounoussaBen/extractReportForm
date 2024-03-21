@@ -4,44 +4,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Django app{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'src/output.css' %}">
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Django app{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-green-50 w-full h-full ">
-  <header class="flex justify-between items-center px-8 py-4 bg-white shadow-md">
-      <div class="flex items-center gap-4">
-          <a href="{% url 'logout' %}">
-            <img src={Logo} alt="Logo" class=" mr-4 w-[100px]"></img>
-          </a>
-          <span class="text-xl font-bold">Police Report</span>
-      </div>
-      <div class="flex items-center space-x-4 gap-6">
-          {% if user.is_authenticated %}
-              <span class="text-gray-700">Hi, {{ user.username }}</span>
-              <form action="{% url 'logout' %}" method="post" class="inline-block">
-                  {% csrf_token %}
-                  <button type="submit" class="text-blue-500 hover:text-blue-700">Log Out</button>
-              </form>
-          {% else %}
-              <a href="{% url 'login' %}" class="text-gray-700 hover:text-blue-500">Log In</a>
-              <a href="{% url 'signup' %}" class="text-gray-700 hover:text-blue-500">Sign Up</a>
-          {% endif %}
-      </div>
-  </header>
-  <div class=" mx-auto">
-      {% block content %}
-      {% endblock content %}
-  </div>
-  
-    <footer class="text-center py-4 text-gray-500 bg-gray-200">
-        <p>&copy; 2024 Your Company Name</p>
-    </footer>
-
+<body class="bg-green-50 min-h-screen flex flex-col">
+  <header class="flex justify-between items-center px-8 py-4 shadow-md bg-white z-10">
+    <div class="flex items-center gap-4">
+      <a href="{% url 'logout' %}">
+        <img src="{% static 'Ghana_Police.jpg' %}" alt="Logo" class="mr-4 w-[100px]">
+      </a>
+      <span class="text-xl font-bold">Extract Report Form</span>
+    </div>
+    <div class="flex items-center space-x-4 gap-6">
+      {% if user.is_authenticated %}
+        <span class="text-gray-700">Hi, {{ user.username }}</span>
+        <form action="{% url 'logout' %}" method="post" class="inline-block">
+          {% csrf_token %}
+          <button type="submit" class="flex items-center space-x-1 text-green-500 hover:text-green-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V4a1 1 0 00-1-1H3zm5.293 7.707a1 1 0 011.414 0l2.121-2.121a1 1 0 011.414 1.414l-5 5a1 1 0 01-1.414-1.414z" clip-rule="evenodd" />
+            </svg>
+            <span>Log Out</span>
+          </button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}" class="text-gray-700 hover:text-green-500 flex items-center space-x-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zM4 11a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+          </svg>
+          <span>Log In</span>
+        </a>
+        <a href="{% url 'signup' %}" class="text-gray-700 hover:text-green-500 flex items-center space-x-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a1 1 0 11-.099-1.392A3.001 3.001 0 018 11zm3-4a1 1 0 11.707 1.707A1 1 0 0111 9zm2 5h-5a1 1 0 010-2h5a1 1 0 010 2z"
+            clip-rule="evenodd" />
+        </svg>
+    <span>Sign Up</span>
+</a>
+{% endif %}
+</div>
+</header>
+<div class="flex-grow mx-auto">
+{% block content %}
+{% endblock content %}
+</div>
 </body>
+<footer class="flex flex-col items-center justify-center py-4 px-8 space-y-2 bg-gray-800 text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M8.43333 16.471A3.5 3.5 0 0 1 12 13v-2.828A3.5 3.5 0 0 0 8.43333 16.471zM4.25 8.114A4.75 4.75 0 0 1 8 12.75v2.828a4.75 4.75 0 0 0 3.75-4.636zM15.75 8.114A4.75 4.75 0 0 1 12 12.75v2.828a4.75 4.75 0 0 0 3.75-4.636zM11.66667 3.529A7.75 7.75 0 0 0 4 11.25v2.828a7.75 7.75 0 0 1 7.66667-7.721z" clip-rule="evenodd" />
+    </svg>
+    <span class="text-sm font-medium">Ghana Police Service - &copy; 2024</span>
+  </footer>
 
 </html>
