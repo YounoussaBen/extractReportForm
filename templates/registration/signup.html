@@ -3,21 +3,21 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block content %}
-<div class="flex items-center justify-center min-h-screen bg-green-50">
+<div class="flex items-center justify-center mt-auto pt-20 bg-green-50">
   <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
     <h2 class="text-2xl font-bold text-center mb-4">Sign Up</h2>
     <form method="post" class="space-y-4">
       {% csrf_token %}
       <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-      <input type="text" id="username" name="username" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:ring-1"></input>
+      <input type="text" id="username" name="username" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
       <label for="password1" class="block text-sm font-medium text-gray-700">Password</label>
-      <input type="password" id="password1" name="password1" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:ring-1"></input>
+      <input type="password" id="password1" name="password1" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
       <label for="password2" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-      <input type="password" id="password2" name="password2" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-blue-500 focus:ring-1" ></input>
+      <input type="password" id="password2" name="password2" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
       <div class="flex flex-col  justify-between gap-5" >
-        <button type="submit" class="px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-700 hover:text-white">Sign Up</button>
-        <div className='flex items-center justify-center text-sm text-center'>
-            If you don't have an account,  <a href="{% url 'login' %}" class=" text-xl text-blue-400 font-thin py-2 rounded-md hover:text-blue-700">Log In</a>
+        <button type="submit" class="px-4 py-2 bg-green-500 rounded-md hover:bg-green-700 hover:text-white">Sign Up</button>
+        <div className='flex items-center justify-center text-sm text-center' style="display: flex; justify-content: center; align-items: center;">
+            If you don't have an account,  <a href="{% url 'login' %}" class=" text-xl text-green-900 font-thin py-2 rounded-md hover:text-green-1700">Log In</a>
         </div>        
       </div>
     </form>
