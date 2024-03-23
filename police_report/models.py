@@ -18,9 +18,9 @@ class Application(models.Model):
     other_document_details = models.CharField(max_length=100, blank=True)
 
     # Additional fields for document details
-    issue_date = models.DateField()  # Date the document was issued
-    expiry_date = models.DateField()  # Date the document expires
-    identification_number = models.CharField(max_length=100)  # Unique identification number on the document
+    issue_date = models.DateField(default=None, blank=True)  # Set default to None and allow blank values
+    expiry_date = models.DateField(default=None, blank=True)  # Set default to None and allow blank values
+    identification_number = models.CharField(max_length=100, blank=True)  # Set default to empty string and allow blank values
 
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
