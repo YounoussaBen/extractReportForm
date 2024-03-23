@@ -18,10 +18,10 @@ class GeneratePdf(View):
 
         if application:
             lost_document_office = {
-                "passport": "Passport Office",
-                "drivers_license": "Driver and Vehicle Licensing Authority (DVLA)",
-                "ghana_card": "National Identification Authority (NIA)",
-                "voter_id_card": "Electoral Commission",
+                "Passport": "Passport Office",
+                "Drivers License": "Driver and Vehicle Licensing Authority (DVLA)",
+                "Ghana Card": "National Identification Authority (NIA)",
+                "Voter ID Card": "Electoral Commission",
             }
 
             data = {
