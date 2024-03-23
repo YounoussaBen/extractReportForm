@@ -34,7 +34,7 @@ class GeneratePdf(View):
                 "created_at": application.created_at.strftime("%B %d, %Y"),
                 "id": application.pk,
                 "ref": "APP-2024-000" + str(application.pk),
-                "reason": f"{application.name} from {application.address}, on phone number {application.phone_number} reported that on {application.occurrence_date_time.strftime('%B %d, %Y')} at about {application.occurrence_date_time.strftime('%I:%M %p')}, he detected that his {application.get_lost_document_display()} could not be found. That all efforts made to trace same proved futile, hence needed police assistance. \n\nExtract of occurrence was prepared and issued to the complainant to be taken to {lost_document_office[application.lost_document]} for further action."
+                "reason": f"{application.name} residing at {application.address}, on phone number {application.phone_number} reported that on {application.occurrence_date_time.strftime('%B %d, %Y')} at about {application.occurrence_date_time.strftime('%I:%M %p')}, he detected that his {application.get_lost_document_display()} (ID Number: {application.identification_number}) could not be found. The document was issued on {application.issue_date.strftime('%B %d, %Y')} and expires on {application.expiry_date.strftime('%B %d, %Y')}. That all efforts made to trace same proved futile, hence needed police assistance. \n\nExtract of occurrence was prepared and issued to the complainant to be taken to {lost_document_office[application.lost_document]} for further action."
             }
             pdf = render_to_pdf('report.html', data)
             if pdf:

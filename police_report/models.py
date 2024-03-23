@@ -17,6 +17,11 @@ class Application(models.Model):
     lost_document = models.CharField(max_length=100, choices=DOCUMENT_CHOICES)
     other_document_details = models.CharField(max_length=100, blank=True)
 
+    # Additional fields for document details
+    issue_date = models.DateField()  # Date the document was issued
+    expiry_date = models.DateField()  # Date the document expires
+    identification_number = models.CharField(max_length=100)  # Unique identification number on the document
+
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
