@@ -6,18 +6,35 @@
 <div class="flex items-center justify-center mt-auto pt-20 bg-green-50">
   <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
     <h2 class="text-2xl font-bold text-center mb-4">Sign Up</h2>
+
+    {% if form.errors %}
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md mb-4" role="alert">
+        <strong>Oops! There was an error:</strong>
+        <ul>
+          {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
     <form method="post" class="space-y-4">
       {% csrf_token %}
       <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
       <input type="text" id="username" name="username" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
       <label for="password1" class="block text-sm font-medium text-gray-700">Password</label>
-      <input type="password" id="password1" name="password1" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
+      <small class="text-xs text-gray-600 block mb-1">Your password can't be too similar to your other personal information, must contain at least 8 characters, can't be a commonly used password, and can't be entirely numeric.</small>
+      <input type="password" id="password1" name="password1" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required>
+      </input>
       <label for="password2" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+      <input type="password" id="password2" name="password2" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>      
       <input type="password" id="password2" name="password2" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
-      <div class="flex flex-col  justify-between gap-5" >
+      <div class="flex flex-col justify-between gap-5">
         <button type="submit" class="px-4 py-2 bg-green-500 rounded-md hover:bg-green-700 hover:text-white">Sign Up</button>
-        <div className='flex items-center justify-center text-sm text-center' style="display: flex; justify-content: center; align-items: center;">
-            If you don't have an account,  <a href="{% url 'login' %}" class=" text-xl text-green-900 font-thin py-2 rounded-md hover:text-green-1700">Log In</a>
+        <div class="flex items-center justify-center text-sm text-center">
+            If you don't have an account,  <a href="{% url 'login' %}" class="text-xl text-green-900 font-thin py-2 rounded-md hover:text-green-1700">Log In</a>
         </div>        
       </div>
     </form>
