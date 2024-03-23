@@ -17,6 +17,13 @@ class GeneratePdf(View):
         application = Application.objects.latest('id')
 
         if application:
+            lost_document_office = {
+                "passport": "Passport Office",
+                "drivers_license": "Driver and Vehicle Licensing Authority (DVLA)",
+                "ghana_card": "National Identification Authority (NIA)",
+                "voter_id_card": "Electoral Commission",
+            }
+
             data = {
                 "name": application.name,
                 "phone_number": application.phone_number,
@@ -27,7 +34,8 @@ class GeneratePdf(View):
                 "created_at": application.created_at.strftime("%B %d, %Y"),
                 "id": application.pk,
                 "ref": "APP-2024-000" + str(application.pk),
-                "reason": f"{application.name} from {application.address}, on phone number {application.phone_number} reported that on {application.occurrence_date_time.strftime('%B %d, %Y')} at about {application.occurrence_date_time.strftime('%I:%M %p')}, he detected that his {application.get_lost_document_display()} could not be found. That all efforts made to trace same proved futile, hence needed police assistance. \n\nExtract of occurrence was prepared and issued to the complainant to be taken to Passport Office and Driver and Vehicle Licensing Authority (DVLA) respectively for further action."
+                "reason": f"{application.name} from {application.address}, on phone number {application.phone_number} reported that on {application.occurrence_date_time.strftime('%B %d, %Y')} at about {application.occurrence_date_time.strftime('%I:%M %p')}, he detected that his {application.get_lost_document_display()} could not be found. All efforts made to trace the same proved futile, hence needed police assistance. \n\nExtract of occurrence was prepared and issued to the complainant to be taken to {', '.join([lost_document_office[doc] for doc in application.lost_document])} for further action."
+
             }
             pdf = render_to_pdf('report.html', data)
             if pdf:
