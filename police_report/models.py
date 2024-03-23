@@ -12,7 +12,7 @@ class Application(models.Model):
         ('passport', 'Passport'),
         ('drivers_license', "Driver's License"),
         ('ghana_card', 'Ghana Card'),
-        ('other', 'Other'),
+        ('voter_id_card', 'Voter ID Card'),
     ]
     lost_document = models.CharField(max_length=100, choices=DOCUMENT_CHOICES)
     other_document_details = models.CharField(max_length=100, blank=True)
