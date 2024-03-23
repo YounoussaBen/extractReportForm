@@ -25,11 +25,6 @@
             background-color: #f5f5f5;
             font-weight: bold;
         }
-        /* Adjust column widths */
-        th:nth-child(2)/* Target second column (Occurrence) */
-        {
-            width: 50%;
-        }
 
         /* Header Styles */
         .header-container {
@@ -92,13 +87,13 @@
             <thead>
                 <tr>
                     <th scope="col">Date</th>
-                    <th scope="col">Occurrence</th>
-                    <th scope="col">No.</th>
+                    <th scope="col" style="width: 50%;">Occurrence</th>
+                    <th scope="col" style="width: 10%;">No.</th>
                     <th scope="col">Ref No.</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr style="height: 500px;">
                     <td>{{ created_at }}</td>
                     <td>{{ reason }}</td>
                     <td>{{ id }}</td>
