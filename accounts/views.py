@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.messages import success
 from django.contrib import messages
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 
 class SignUpView(CreateView):
@@ -27,3 +27,9 @@ class CustomLoginView(LoginView):
     def form_invalid(self, form):
         messages.error(self.request, 'Invalid username or password. Please try again.')
         return super().form_invalid(form)
+    
+class CustomLogoutView(LogoutView):
+    def dispatch(self, request, *args, **kwargs):
+        messages.success(request, 'You have successfully logged out.')
+        return super().dispatch(request, *args, **kwargs)
+    
