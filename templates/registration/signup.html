@@ -24,6 +24,8 @@
       {% csrf_token %}
       <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
       <input type="text" id="username" name="username" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
+      <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+      <input type="email" id="email" name="email" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required></input>
       <label for="password1" class="block text-sm font-medium text-gray-700">Password</label>
       <small class="text-xs text-gray-600 block mb-1">Your password can't be too similar to your other personal information, must contain at least 8 characters, can't be a commonly used password, and can't be entirely numeric.</small>
       <input type="password" id="password1" name="password1" class="block w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-green-500 focus:ring-1" required>
@@ -36,7 +38,7 @@
             If you don't have an account,  <a href="{% url 'login' %}" class="text-xl text-green-900 font-thin py-2 rounded-md hover:text-green-1700">Log In</a>
         </div>        
       </div>
-    </form>
+    </form>    
   </div>
 </div>
 {% endblock %}
