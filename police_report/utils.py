@@ -1,11 +1,12 @@
 from io import BytesIO
-from django.http import HttpResponse
 from django.template.loader import get_template
-from weasyprint import HTML
+from xhtml2pdf import pisa
 
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
     html = template.render(context_dict)
-    pdf_file = BytesIO()
-    HTML(string=html).write_pdf(pdf_file)
-    return pdf_file.getvalue()
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return result.getvalue()
+    return None
