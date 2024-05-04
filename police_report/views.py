@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from .serializers import ApplicationSerializer
 from .models import Application  
 from rest_framework.permissions import IsAuthenticated
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 
 class GeneratePdf(View):
@@ -41,6 +43,20 @@ class GeneratePdf(View):
                 filename = "Application_for_%s.pdf" % (data['name'])
                 content = "inline; filename= %s" % (filename)
                 response['Content-Disposition'] = content
+
+                subject = 'Application Report'
+                from_email = settings.EMAIL_HOST_USER
+                to_email = request.user.email
+
+                email = EmailMessage(
+                    subject=subject,
+                    body="Please find attached the generated report for your application.",
+                    from_email=from_email,
+                    to=[to_email],
+                )
+                email.attach('application_report.pdf', pdf, 'application/pdf')
+                email.send()
+
                 return response
         return HttpResponse("No applications found")
 
