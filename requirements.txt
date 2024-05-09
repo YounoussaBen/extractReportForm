@@ -7,3 +7,4 @@ gunicorn==20.1.0
 xhtml2pdf
 django-browser-reload
 whitenoise
+django-mysql==4.13.0
