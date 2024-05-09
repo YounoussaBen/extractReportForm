@@ -12,29 +12,24 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(BASE_DIR / '.env')
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'fd0c36ec4ab8a3ff491b824a641ab113'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
+DEBUG = 0
 
 ALLOWED_HOSTS = [
-    os.getenv('ALLOWED_HOST_LOCAL', 'localhost'),  # Default to localhost for development
-    os.getenv('ALLOWED_HOST_RENDER', ''),  # Default to empty string for production
+    'localhost', '127.0.0.1'
 ]
 
 # Application definition
@@ -90,12 +85,12 @@ WSGI_APPLICATION = 'extractReportForm.wsgi.application'
 # mysql set up django
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.mysql'),
-        'NAME': os.getenv('DB_NAME', 'extractReportForm'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''), 
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '3306'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'gh_police',
+        'USER': 'root',
+        'PASSWORD': 'Ghana@6059186272', 
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
    
